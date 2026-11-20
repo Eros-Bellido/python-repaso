@@ -1,0 +1,1 @@
+print("Hola soy Eros y estoy empezando mi ruta como IA Engineer")
