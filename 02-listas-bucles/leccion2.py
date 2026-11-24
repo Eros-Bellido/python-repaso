@@ -64,6 +64,9 @@ print(max(precios))          # 40.5
 print(min(precios))          # 15.0
 print(sorted(precios))       # ordenada, sin cambiar la original
 
+# --- 7. .index(): ¿en qué posición está un valor? ----------------------------
+frutas = ["manzana", "pera", "uva"]
+print(frutas.index("pera"))    # 1  -> "pera" está en la posición 1
 
 # =============================================================
 # BUENAS PRÁCTICAS
