@@ -1,5 +1,3 @@
-carrito = {}
-
 def calcular_subtotal(carrito):
     return sum(carrito.values())
 
@@ -20,9 +18,7 @@ def producto_mas_caro(carrito):
 
     return nombre_caro 
 
-subtotal = calcular_subtotal(carrito)
-descuento = calcular_descuento(subtotal)
-total = subtotal - descuento
+carrito = {}
 
 while True:
     producto = input("Ingrese producto o 'fin' para terminar: ")
@@ -37,6 +33,10 @@ while True:
 if len(carrito) == 0:
     print("Carrito vacío")
 else:
+    subtotal = calcular_subtotal(carrito)
+    descuento = calcular_descuento(subtotal)
+    total = subtotal - descuento
+
     for producto, precio in carrito.items():
         print(f"{producto} - S/ {precio:.2f}")
 

@@ -17,6 +17,13 @@ productos.remove("Short")    # elimina por valor
 productos[0] = "Polera"      # cambia un elemento
 print(productos)             # ['Polera', 'Gorra', 'Medias']
 print("Gorra" in productos)  # True -> ¿está en la lista?
+print(productos.index("Gorra"))  # 1 -> en qué POSICIÓN está ese valor
+
+# Listas alineadas: la misma posición = el mismo producto
+nombres = ["Polo", "Gorra"]
+costos = [25.90, 80.00]
+posicion = costos.index(max(costos))   # posición del precio más alto
+print(nombres[posicion])               # Gorra
 
 
 # --- 2. TUPLAS: como una lista, pero NO se puede modificar -----
@@ -41,7 +48,7 @@ for i, precio in enumerate(precios, start=1):
 for n in range(3):           # 0, 1, 2  -> el final NO se incluye
     print(n)
 
-for n in range(1, 6, 2):     # 1, 3, 5  -> (inicio, fin, paso) ejemplo: del 1 al 6, pero de 2 en 2
+for n in range(1, 6, 2):     # 1, 3, 5  -> (inicio, fin, paso)
     print(n)
 
 
@@ -51,11 +58,23 @@ while intentos < 3:
     print(f"Intento {intentos + 1}")
     intentos += 1            # igual a: intentos = intentos + 1
 
-# break sale del bucle; continue salta a la siguiente vuelta
+# while True + break: repetir hasta que el usuario decida salir
+#   while True:
+#       dato = input("Producto o 'fin': ")
+#       if dato == "fin":
+#           break            # sale del bucle
+#       ...
+
+# break TERMINA el bucle; continue SALTA a la siguiente vuelta
 for precio in precios:
     if precio > 30:
         break                # se detiene en 40.50
     print(precio)
+
+for precio in precios:
+    if precio == 15.00:
+        continue             # salta el 15.00 y sigue con el resto
+    print(precio)            # 25.9, 40.5
 
 
 # --- 6. FUNCIONES ÚTILES CON LISTAS ----------------------------
@@ -64,9 +83,6 @@ print(max(precios))          # 40.5
 print(min(precios))          # 15.0
 print(sorted(precios))       # ordenada, sin cambiar la original
 
-# --- 7. .index(): ¿en qué posición está un valor? ----------------------------
-frutas = ["manzana", "pera", "uva"]
-print(frutas.index("pera"))    # 1  -> "pera" está en la posición 1
 
 # =============================================================
 # BUENAS PRÁCTICAS
@@ -79,6 +95,8 @@ print(frutas.index("pera"))    # 1  -> "pera" está en la posición 1
 #   Si necesitas el índice, usa enumerate().
 # - Usa sum(), max(), min() en vez de calcularlos a mano.
 # - Lista si los datos cambian; tupla si son fijos.
+# - Revisa si la lista está vacía antes de usar max()/min():
+#       if len(precios) == 0:  -> mostrar mensaje
 
 # =============================================================
 # ERRORES COMUNES
@@ -87,3 +105,5 @@ print(frutas.index("pera"))    # 1  -> "pera" está en la posición 1
 # - Olvidar que range(5) llega hasta 4, no hasta 5.
 # - while infinito: olvidar actualizar la variable (intentos += 1).
 # - Borrar elementos de una lista MIENTRAS la recorres con for.
+# - max([]) o min([]) con lista vacía -> ValueError.
+# - Comparar la LISTA en vez del dato: while productos != 'fin' (nunca termina).
